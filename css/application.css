@@ -1,0 +1,27 @@
+* {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300;
+  font-size: 16px; }
+
+body {
+  background-color: #faebd7; }
+
+h1 {
+  text-align: center; }
+
+.video-container {
+  width: 90%;
+  margin: auto; }
+  .video-container video {
+    width: 100%; }
+
+.caption-container {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10%; }
+  .caption-container p {
+    background: #fdfdfd;
+    padding: 5%;
+    border-radius: 3px; }
+
+/*# sourceMappingURL=application.css.map */
