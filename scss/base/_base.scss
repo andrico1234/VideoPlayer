@@ -8,25 +8,4 @@ body {
   background-color: $antiqueWhite;
 }
 
-h1 {
-  text-align: center;
-}
 
-.video-container {
-  width: 90%;
-  margin: auto;
-  video {
-    width: 100%;
-  }
-}
-
-.caption-container {
-  width: 90%;
-  margin: auto;
-  margin-bottom: 10%;
-  p {
-    background: $offWhite;
-    padding: 5%;
-    border-radius: 3px;
-  }
-}

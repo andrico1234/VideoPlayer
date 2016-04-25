@@ -10,13 +10,14 @@
 </head>
 <body>
     <div class="header-container">
-        <h1>Project 7 - Interactive Video Player</h1>
+        <h1>Connecting your devices to the Internet</h1>
     </div>
 
     <div class="video-container">
-        <video>
-            <source src="videos/video.mp4">
-            <source src="videos/video.ogg">
+        <video autoplay controls preload="metadata">
+            <source src="videos/video.mp4" type="video/mp4">
+            <source src="videos/video.ogg" type="video/ogg">
+            <p>Browser doesn't support the video file.</p>
         </video>
     </div>
 

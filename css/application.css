@@ -11,9 +11,14 @@ h1 {
 
 .video-container {
   width: 90%;
-  margin: auto; }
+  margin: auto;
+  text-align: center;
+  background: #34282C; }
   .video-container video {
     width: 100%; }
+    @media screen and (min-width: 768px) {
+      .video-container video {
+        width: 70%; } }
 
 .caption-container {
   width: 90%;
@@ -23,5 +28,18 @@ h1 {
     background: #fdfdfd;
     padding: 5%;
     border-radius: 3px; }
+  @media screen and (min-width: 1024px) {
+    .caption-container {
+      width: 70%; }
+      .caption-container p span {
+        font-size: 20px; } }
+
+.header-container {
+  width: 90%;
+  font-size: 1.3em;
+  margin: auto; }
+  @media screen and (min-width: 768px) {
+    .header-container {
+      font-size: 1.5em; } }
 
 /*# sourceMappingURL=application.css.map */
