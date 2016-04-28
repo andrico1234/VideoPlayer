@@ -6,6 +6,22 @@
 body {
   background-color: #faebd7; }
 
+.hidden {
+  visibility: collapse; }
+
+.control-bar {
+  text-align: left;
+  z-index: 1; }
+  .control-bar img {
+    padding: 5px;
+    z-index: 1;
+    position: relative; }
+  .control-bar #full-screen {
+    order: 1; }
+
+#pause-button, #play-button {
+  display: inline; }
+
 h1 {
   text-align: center; }
 

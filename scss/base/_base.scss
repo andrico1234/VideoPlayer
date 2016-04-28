@@ -8,4 +8,24 @@ body {
   background-color: $antiqueWhite;
 }
 
+.hidden {
+  visibility: collapse;
+}
+
+.control-bar {
+  text-align: left;
+  z-index: 1;
+  img {
+    padding: 5px;
+    z-index: 1;
+    position: relative;
+  }
+  #full-screen {
+    order: 1;
+  }
+}
+
+#pause-button, #play-button {
+  display: inline;
+ }
 
