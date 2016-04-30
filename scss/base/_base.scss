@@ -8,6 +8,14 @@ body {
   background-color: $antiqueWhite;
 }
 
+.seek-bar-container {
+  z-index: 300001;
+}
+
+button {
+  float:left;
+}
+
 .hidden {
   visibility: collapse;
 }
@@ -19,7 +27,7 @@ body {
   margin-top: -25px;
   height: 20px;
   width: 100%;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   @include tablet {
     margin-top: -30px;
     width: 80%;
@@ -37,11 +45,12 @@ video {
 }
 
 #pause-button, #play-button, #volumeOff, #volumeOn,
-#full-screen{
+#full-screen {
   float: left;
   width: 12px;
   @include tablet {
     width: 15px;
   }
- }
+}
+
 

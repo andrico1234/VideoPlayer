@@ -6,6 +6,12 @@
 body {
   background-color: #faebd7; }
 
+.seek-bar-container {
+  z-index: 300001; }
+
+button {
+  float: left; }
+
 .hidden {
   visibility: collapse; }
 
