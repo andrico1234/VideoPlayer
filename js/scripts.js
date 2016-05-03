@@ -2,18 +2,20 @@
  * Created by Home on 28/04/2016.
  */
 
-var $video = document.getElementById("main-video");
+var $video = document.getElementById("main-video"), track;
 var currentVolume = $video.volume;
 var seekSlider = document.getElementById("seek-bar");
 var volumeBar = document.getElementById("volume-fader");
 var $volumeButton = $('#volume-off-on');
 var $playPauseButton = $("#start-stop");
+var $fullScreen = $(document.getElementById("full-screen-button"));
 var $currentTime = document.getElementById("current-time");
 var $durationTime = document.getElementById("duration-time");
 var $playbackButton = document.getElementById("playback-speed-button");
+var $videoInterface = document.getElementsByClassName("additional-controls");
 var speedCounter = 0;
-
-$video.addEventListener("timeupdate", seekTimeUpdate, false);
+var $captionButton = $(document.getElementById("subtitles"));
+var $track = $(document.getElementById("track"));
 
 $("#play-button").hide();
 $("#pause-button").show();
@@ -22,6 +24,7 @@ $("#volumeOn").show();
 $("#100-speed").show();
 $("#50-speed").hide();
 $("#150-speed").hide();
+
 
 // play pause function
 
@@ -44,19 +47,22 @@ $playPauseButton.click(function () {
 
 // video seek
 
-function videoSeek() {
+$(seekSlider).click(function () {
+    changeTime();
+});
+
+// $(seekSlider).mouseup(function() {
+//     changeTime();
+// });
+
+function changeTime() {
     $video.currentTime = $video.duration * (seekSlider.value / 100);
 }
 
-$(seekSlider).change(function () {
-    videoSeek();
-    console.log("position changed");
-});
 
-function seekTimeUpdate() {
+$video.addEventListener("timeupdate", function () {
     var newTime = $video.currentTime * (100 / $video.duration);
     seekSlider.value = newTime;
-    // console.log("real time update");
 
     var currentMinutes = Math.floor($video.currentTime / 60);
     var currentSeconds = Math.floor($video.currentTime - currentMinutes * 60);
@@ -72,7 +78,17 @@ function seekTimeUpdate() {
     var totalTime = totalMinutes + ":" + totalSeconds;
     $durationTime.innerHTML = totalTime;
     $currentTime.innerHTML = currentTime;
-}
+});
+
+// $(seekSlider).mousedown(function () {
+//     playPause();
+// });
+//
+// $(seekSlider).mouseup(function () {
+//     playPause();
+// });
+
+// issue: seekSlider doesn't work when video pauses when bar is clicked.
 
 
 // volume functions
@@ -105,6 +121,7 @@ function updateVolumeBar() {
 }
 
 // To add - when volumebar val = 0, change image.
+// make volume slider appear through hover and change orientation to vertical
 
 $(volumeBar).on("change", function () {
     updateVolumeBar();
@@ -114,64 +131,83 @@ $(volumeBar).on("change", function () {
 // Playback speed code
 
 function changeSpeed() {
-    if (speedCounter = 0) {
-        speedCounter++;
+    if (speedCounter == 0) {
         $("#100-speed").hide();
         $("#50-speed").hide();
         $("#150-speed").show();
-        console.log("normal speed and counter is " + speedCounter);
-    } else if (speedCounter = 1) {
+        $video.playbackRate = 1.5;
+        console.log("fast speed and counter is " + speedCounter);
         speedCounter++;
+    } else if (speedCounter == 1) {
         $("#100-speed").hide();
         $("#50-speed").show();
         $("#150-speed").hide();
-        console.log("fast speed and counter is " + speedCounter);
-    } else if (speedCounter = 2) {
+        console.log("slow speed and counter is " + speedCounter);
+        $video.playbackRate = 0.5;
+        speedCounter++;
+    } else {
         $("#100-speed").show();
         $("#50-speed").hide();
         $("#150-speed").hide();
+        console.log("normal speed and counter is " + speedCounter);
+        $video.playbackRate = 1;
         speedCounter = 0;
-        console.log("slow speed and counter is " + speedCounter);
     }
-    return speedCounter;
 }
 
 $("#playback-speed-button").click(function () {
     changeSpeed();
 });
-// $playbackButton.children[i] gets the child element.
-// treat the button's children as an array.
-// each time the button is clicked cycle to the next image
-// and an if statement
-// if array[0] normal speed, array[1] fast speed, array[2] slow speed
 // images by Daan Dirk
+
 
 // Buffering Code
 
 
 // Hover Code
 
-// when mouse enters screen, div containing toolbar appear, the time bar shrinks in height
+$($video).hover(function () {
+    $($videoInterface).fadeOut(100);
+}, function () {
+    $($videoInterface).fadeIn(100);
+});
 // when mouse leaves div container toolbar disappears, time bar stretches in height.
 
 
 // Subtitle code
+function toggleSubtitles() {
+    if ($video.textTracks[0].mode == 'hidden') {
+        $video.textTracks[0].mode = "showing";
+        console.log("enable subtitles");
+    } else {
+        $video.textTracks[0].mode = "hidden";
+        console.log("disable subtitles");
+    }
+}
+
+$video.textTracks[0].mode = 'hidden';
+
+$captionButton.click(function () {
+    toggleSubtitles();
+});
+// when cc button is pressed when subtitles are enabled
+// turn off captions. add a class of hidden?
+
+// when cc is pressed when subtitles are disabled
+// turn on captions by removing class
 
 
 // Full screen
 
-var elem = document.getElementById("main-video");
-
-$("#full-screen").click(function () {
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
+$fullScreen.click(function () {
+    if ($video.requestFullscreen) {
+        $video.requestFullscreen();
+    } else if ($video.mozRequestFullScreen) {
+        $video.mozRequestFullScreen(); // Firefox
+    } else if ($video.webkitRequestFullscreen) {
+        $video.webkitRequestFullscreen(); // Chrome and Safari
     }
+    console.log("full screen");
 });
 // add the toolbar to fullscreen
 
