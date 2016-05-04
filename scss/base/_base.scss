@@ -20,25 +20,6 @@ button {
   visibility: collapse;
 }
 
-.control-bar {
-  position: relative;
-  z-index: 300000;
-  margin: auto;
-  margin-top: -25px;
-  height: 20px;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  @include tablet {
-    margin-top: -30px;
-    width: 80%;
-
-  }
-  img {
-    padding: 5px;
-    z-index: 1;
-    position: relative;
-  }
-}
 
 video {
   z-index: -1;

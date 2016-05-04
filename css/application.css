@@ -15,23 +15,6 @@ button {
 .hidden {
   visibility: collapse; }
 
-.control-bar {
-  position: relative;
-  z-index: 300000;
-  margin: auto;
-  margin-top: -25px;
-  height: 20px;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.9); }
-  @media screen and (min-width: 768px) {
-    .control-bar {
-      margin-top: -30px;
-      width: 80%; } }
-  .control-bar img {
-    padding: 5px;
-    z-index: 1;
-    position: relative; }
-
 video {
   z-index: -1; }
 
@@ -51,12 +34,25 @@ h1 {
   width: 90%;
   margin: auto;
   text-align: center;
-  background: #34282C; }
+  position: relative; }
   .video-container video {
     width: 100%; }
     @media screen and (min-width: 768px) {
       .video-container video {
-        width: 80%; } }
+        width: 100%; } }
+
+.control-bar {
+  position: absolute;
+  bottom: 0;
+  z-index: 300000;
+  margin: auto;
+  width: 100%;
+  margin-top: -45px;
+  background-color: rgba(0, 0, 0, 0.4); }
+  .control-bar img {
+    padding: 5px;
+    z-index: 1;
+    position: relative; }
 
 .caption-container {
   width: 90%;

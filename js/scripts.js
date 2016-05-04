@@ -15,7 +15,6 @@ var $playbackButton = document.getElementById("playback-speed-button");
 var $videoInterface = document.getElementsByClassName("additional-controls");
 var speedCounter = 0;
 var $captionButton = $(document.getElementById("subtitles"));
-var $track = $(document.getElementById("track"));
 
 $("#play-button").hide();
 $("#pause-button").show();
@@ -176,16 +175,17 @@ $($video).hover(function () {
 
 // Subtitle code
 function toggleSubtitles() {
-    if ($video.textTracks[0].mode == 'hidden') {
-        $video.textTracks[0].mode = "showing";
-        console.log("enable subtitles");
-    } else {
+    if ($video.textTracks[0].mode == 'showing') {
         $video.textTracks[0].mode = "hidden";
         console.log("disable subtitles");
+    } else {
+        $video.textTracks[0].mode = "showing";
+        console.log("enable subtitles");
     }
 }
 
-$video.textTracks[0].mode = 'hidden';
+// var track = $video.textTracks;
+// track.mode = 'hidden';
 
 $captionButton.click(function () {
     toggleSubtitles();
