@@ -59,13 +59,13 @@ function changeTime() {
     console.log("video changed");
 }
 
-// $(function () {
+$(function () {
     $(seekSlider).slider({
-        // range: "min",
-        // value: 0,
-        // min: 1,
-        // max: 100
-    // })
+        range: "min",
+        value: 0,
+        min: 1,
+        max: 100
+    })
 });
 
 $video.addEventListener("timeupdate", function () {
@@ -178,12 +178,15 @@ $("#playback-speed-button").click(function () {
 
 
 // Hover Code
-
-$($video).hover(function () {
+$(document).ready(function() {
     $($videoInterface).fadeOut(100);
-}, function () {
-    $($videoInterface).fadeIn(100);
 });
+
+    $(".video-container").hover(function () {
+        $($videoInterface).fadeIn(100);
+    }, function () {
+        $($videoInterface).fadeOut(100);
+    });
 // when mouse leaves div container toolbar disappears, time bar stretches in height.
 
 
@@ -223,6 +226,7 @@ $fullScreen.click(function () {
     }
     console.log("full screen");
 });
+
 // add the toolbar to fullscreen
 
 

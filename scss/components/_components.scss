@@ -10,6 +10,9 @@ h1 {
   @include tablet {
     width: 90%;
   }
+  @include desktop {
+    width: 80%;
+  }
   .control-bar {
     position: absolute;
     bottom: 0;

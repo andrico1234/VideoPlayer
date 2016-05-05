@@ -6,8 +6,9 @@
 body {
   background-color: #faebd7; }
 
-.seek-bar-container {
-  z-index: 300001; }
+#seek-bar {
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.4); }
 
 button {
   height: 35px;
@@ -52,7 +53,8 @@ button {
   visibility: collapse; }
 
 .seek-bar-container {
-  position: relative; }
+  position: relative;
+  z-index: 300001; }
   .seek-bar-container div {
     background: #666;
     height: 4px;
@@ -81,6 +83,9 @@ h1 {
   @media screen and (min-width: 768px) {
     .video-container {
       width: 90%; } }
+  @media screen and (min-width: 1024px) {
+    .video-container {
+      width: 80%; } }
   .video-container .control-bar {
     position: absolute;
     bottom: 0; }
