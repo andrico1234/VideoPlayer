@@ -22,7 +22,8 @@ button {
   bottom: 10px; }
 
 .additional-controls {
-  display: flex; }
+  display: flex;
+  align-items: center; }
   .additional-controls #start-stop {
     order: 1; }
   .additional-controls .time {
