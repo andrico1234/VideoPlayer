@@ -56,10 +56,20 @@ $(seekSlider).click(function () {
 
 function changeTime() {
     $video.currentTime = $video.duration * (seekSlider.value / 100);
+    console.log("video changed");
 }
 
+// $(function () {
+    $(seekSlider).slider({
+        // range: "min",
+        // value: 0,
+        // min: 1,
+        // max: 100
+    // })
+});
 
 $video.addEventListener("timeupdate", function () {
+
     var newTime = $video.currentTime * (100 / $video.duration);
     seekSlider.value = newTime;
 
@@ -78,6 +88,10 @@ $video.addEventListener("timeupdate", function () {
     $durationTime.innerHTML = totalTime;
     $currentTime.innerHTML = currentTime;
 });
+
+// have the colour of the slider bar change if the ball is past the point of playing
+// a few ideas. If the value of the slider is less than the position of the blue, change colour
+// use the seekSlider.value and everything less than that changes colour.
 
 // $(seekSlider).mousedown(function () {
 //     playPause();

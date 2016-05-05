@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/application.css">
     <script src="js/jquery-2.2.3.min.js" type="text/javascript"></script>
-</head>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
 <body>
 <div class="header-container">
     <h1>Connecting your devices to the Internet</h1>
@@ -23,20 +23,27 @@
     </video>
     <div class="control-bar">
         <div class="seek-bar-container">
-            <input id="seek-bar" type="range" min="0" max="100" value="0" step="1">
+            <!--<input id="seek-bar" type="range" min="0" max="100" value="0" step="1">-->
+            <div id="seek-bar"></div>
+            <div id="buffer-bar"></div>
         </div>
         <div class="additional-controls">
             <button type="button" id="start-stop" data-state="play">
                 <img src="img/play-icon.png" alt="play-button" id="play-button">
                 <img src="img/pause-icon.png" alt="pause-button" id="pause-button">
             </button>
-            <span id="current-time"></span> / <span id="duration-time"></span>
+            <div class="time">
+                <span id="current-time"></span> / <span id="duration-time"></span>
+            </div>
+            <div class="empty"></div>
             <button type="button" id="volume-off-on" data-state="mute">
                 <img src="img/volume-on-icon.png" alt="volume-on" id="volumeOn">
                 <img src="img/volume-off-icon.png" alt="volume-off" id="volumeOff">
             </button>
             <input type="range" min="0" max="20" value="20" id="volume-fader">
-            <button id="subtitles" type="button" data-state="captions">CC</button>
+            <button id="subtitles" type="button" data-state="captions">
+                <img src="img/cc-ison.png" alt="cc" id="cc">
+            </button>
             <button type="button" id="playback-speed-button" data-state="playback-speed">
                 <img src="img/regular-speed.png" alt="normal-speed-icon" id="100-speed">
                 <img src="img/fast-speed.png" alt="fast-speed-icon" id="150-speed">

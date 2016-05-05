@@ -3,10 +3,17 @@ h1 {
 }
 
 .video-container {
-  width: 90%;
+  width: 100%;
   margin: auto;
   text-align: center;
   position: relative;
+  @include tablet {
+    width: 90%;
+  }
+  .control-bar {
+    position: absolute;
+    bottom: 0;
+  }
   video {
     width: 100%;
     @include tablet {
@@ -15,16 +22,15 @@ h1 {
   }
 }
 
+#playback-speed-button img, #cc {
+  width: 22px;
+}
+
 .control-bar {
-  position: absolute;
-  bottom: 0;
   z-index: 300000;
-  margin: auto;
   width: 100%;
-  margin-top: -45px;
   background-color: rgba(0, 0, 0, 0.4);
   //@include tablet {
-  //  margin-top: -30px;
   //  width: 80%;
   //
   //}

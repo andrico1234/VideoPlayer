@@ -10,10 +10,52 @@ body {
   z-index: 300001; }
 
 button {
-  float: left; }
+  height: 35px;
+  border: none;
+  background: none; }
+  button button img {
+    width: 12px; }
+
+.time {
+  display: inline-block;
+  color: #fff;
+  bottom: 10px; }
+
+.additional-controls {
+  display: flex; }
+  .additional-controls #start-stop {
+    order: 1; }
+  .additional-controls .time {
+    order: 2; }
+  .additional-controls .empty {
+    order: 3;
+    flex-grow: 2; }
+  .additional-controls #volume-off-on {
+    order: 4; }
+  .additional-controls #volume-fader {
+    order: 5;
+    width: 10%; }
+    @media screen and (min-width: 768px) {
+      .additional-controls #volume-fader {
+        width: 200px;
+        visibility: visible; } }
+  .additional-controls #subtitles {
+    order: 6; }
+  .additional-controls #playback-speed-button {
+    order: 7; }
+  .additional-controls #full-screen-button {
+    order: 8;
+    flex-direction: row-reverse; }
 
 .hidden {
   visibility: collapse; }
+
+.seek-bar-container {
+  position: relative; }
+  .seek-bar-container div {
+    background: #666;
+    height: 4px;
+    width: 100%; }
 
 video {
   z-index: -1; }
@@ -31,23 +73,28 @@ h1 {
   text-align: center; }
 
 .video-container {
-  width: 90%;
+  width: 100%;
   margin: auto;
   text-align: center;
   position: relative; }
+  @media screen and (min-width: 768px) {
+    .video-container {
+      width: 90%; } }
+  .video-container .control-bar {
+    position: absolute;
+    bottom: 0; }
   .video-container video {
     width: 100%; }
     @media screen and (min-width: 768px) {
       .video-container video {
         width: 100%; } }
 
+#playback-speed-button img, #cc {
+  width: 22px; }
+
 .control-bar {
-  position: absolute;
-  bottom: 0;
   z-index: 300000;
-  margin: auto;
   width: 100%;
-  margin-top: -45px;
   background-color: rgba(0, 0, 0, 0.4); }
   .control-bar img {
     padding: 5px;

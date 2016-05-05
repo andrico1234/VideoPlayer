@@ -13,13 +13,80 @@ body {
 }
 
 button {
-  float:left;
+  height: 35px;
+  border: none;
+  background: none;
+  button img {
+    width: 12px;
+  }
+}
+
+.time {
+  display: inline-block;
+  color: $white;
+  bottom: 10px;
+}
+
+.additional-controls {
+  display: flex;
+  #start-stop {
+    order: 1;
+  }
+  .time {
+    order: 2;
+  }
+  .empty {
+    order: 3;
+    flex-grow: 2;
+  }
+  #volume-off-on {
+    order: 4;
+  }
+  #volume-fader {
+    order: 5;
+    width: 10%;
+    @include tablet {
+      width: 200px;
+      visibility: visible;
+    }
+  }
+  #subtitles {
+    order: 6;
+  }
+  #playback-speed-button {
+    order: 7;
+  }
+  #full-screen-button {
+    order: 8;
+    flex-direction: row-reverse;
+  }
+}
+
+#current-time, #duration-time {
+
 }
 
 .hidden {
   visibility: collapse;
 }
 
+.seek-bar-container {
+  position: relative;
+  //height: 30px;
+  div {
+    background: #666;
+    height: 4px;
+    width: 100%;
+  }
+  //input[type=range]::-webkit-slider-thumb {
+  //  -webkit-appearance: none;
+  //  background: $antiqueWhite;
+  //  height: 15px;
+  //  width: 15px;
+  //  border-radius: 100%;
+  //  cursor: pointer;
+  //}
+}
 
 video {
   z-index: -1;
