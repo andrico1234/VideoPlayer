@@ -100,10 +100,18 @@ $video.addEventListener("timeupdate", function () {
     }
 });
 
+function clickTranscript() {
+    // the data-start value of the item clicked becomes the currentSeconds
+    // console.log(this);
+    // var newTime = this.dataset.time;
+    // currentSeconds = newTime;
+}
 
-// remove the class of highlighted if the next sibiling has the class
-//  e.g. class of subtitle 4 is 15st, parse int and have the for loop keep looking for which class is the active one
-// if the currentTime variable is larger than
+$(transcriptParent.children).click(function () {
+    console.log(this);
+    var newTime = this.dataset.time;
+    currentSeconds = newTime;
+});
 
 
 // have the colour of the slider bar change if the ball is past the point of playing
