@@ -6,12 +6,65 @@
 body {
   background-color: #faebd7; }
 
-#seek-bar {
-  height: 10px;
-  background-color: rgba(0, 0, 0, 0.4); }
+h1 {
+  text-align: center; }
 
-#slider-contain {
-  width: 70%; }
+.hidden {
+  visibility: collapse; }
+
+p span {
+  cursor: pointer; }
+
+.highlighted {
+  color: salmon; }
+
+.header-container {
+  width: 90%;
+  font-size: 1.3em;
+  margin: auto; }
+  @media screen and (min-width: 768px) {
+    .header-container {
+      font-size: 1.5em; } }
+
+.seek-bar-container {
+  position: relative;
+  z-index: 300001; }
+  .seek-bar-container div {
+    background: #666;
+    height: 4px;
+    width: 100%; }
+
+.caption-container {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10%; }
+  .caption-container p {
+    background: #fdfdfd;
+    padding: 5%;
+    border-radius: 3px; }
+  @media screen and (min-width: 1024px) {
+    .caption-container {
+      width: 80%; }
+      .caption-container p span {
+        font-size: 20px; } }
+
+.video-container {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  position: relative; }
+  @media screen and (min-width: 768px) {
+    .video-container {
+      width: 90%; } }
+  @media screen and (min-width: 1024px) {
+    .video-container {
+      width: 80%; } }
+  .video-container .control-bar {
+    position: absolute;
+    bottom: 0; }
+  .video-container video {
+    width: 100%;
+    z-index: -1; }
 
 button {
   height: 35px;
@@ -20,13 +73,14 @@ button {
   button button img {
     width: 12px; }
 
-.time {
-  display: inline-block;
-  color: #fff;
-  bottom: 10px; }
-
-.ui-slider-handler {
-  height: auto; }
+#pause-button, #play-button, #volumeOff, #volumeOn,
+#full-screen {
+  float: left;
+  width: 12px; }
+  @media screen and (min-width: 768px) {
+    #pause-button, #play-button, #volumeOff, #volumeOn,
+    #full-screen {
+      width: 15px; } }
 
 .additional-controls {
   display: flex;
@@ -55,57 +109,14 @@ button {
     order: 8;
     flex-direction: row-reverse; }
 
-.hidden {
-  visibility: collapse; }
+#seek-bar {
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.4); }
 
-.seek-bar-container {
-  position: relative;
-  z-index: 300001; }
-  .seek-bar-container div {
-    background: #666;
-    height: 4px;
-    width: 100%; }
-
-video {
-  z-index: -1; }
-
-p span {
-  cursor: pointer; }
-
-.highlighted {
-  color: salmon; }
-
-#pause-button, #play-button, #volumeOff, #volumeOn,
-#full-screen {
-  float: left;
-  width: 12px; }
-  @media screen and (min-width: 768px) {
-    #pause-button, #play-button, #volumeOff, #volumeOn,
-    #full-screen {
-      width: 15px; } }
-
-h1 {
-  text-align: center; }
-
-.video-container {
-  width: 100%;
-  margin: auto;
-  text-align: center;
-  position: relative; }
-  @media screen and (min-width: 768px) {
-    .video-container {
-      width: 90%; } }
-  @media screen and (min-width: 1024px) {
-    .video-container {
-      width: 80%; } }
-  .video-container .control-bar {
-    position: absolute;
-    bottom: 0; }
-  .video-container video {
-    width: 100%; }
-    @media screen and (min-width: 768px) {
-      .video-container video {
-        width: 100%; } }
+.time {
+  display: inline-block;
+  color: #fff;
+  bottom: 10px; }
 
 #playback-speed-button img, #cc {
   width: 22px; }
@@ -118,27 +129,5 @@ h1 {
     padding: 5px;
     z-index: 1;
     position: relative; }
-
-.caption-container {
-  width: 90%;
-  margin: auto;
-  margin-bottom: 10%; }
-  .caption-container p {
-    background: #fdfdfd;
-    padding: 5%;
-    border-radius: 3px; }
-  @media screen and (min-width: 1024px) {
-    .caption-container {
-      width: 80%; }
-      .caption-container p span {
-        font-size: 20px; } }
-
-.header-container {
-  width: 90%;
-  font-size: 1.3em;
-  margin: auto; }
-  @media screen and (min-width: 768px) {
-    .header-container {
-      font-size: 1.5em; } }
 
 /*# sourceMappingURL=application.css.map */

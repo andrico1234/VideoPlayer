@@ -8,90 +8,15 @@ body {
   background-color: $antiqueWhite;
 }
 
-#seek-bar {
-  height: 10px;
-  background-color: rgba(0, 0, 0, 0.4);
-
-}
-
-#slider-contain {
-  width: 70%;
-}
-
-button {
-  height: 35px;
-  border: none;
-  background: none;
-  button img {
-    width: 12px;
-  }
-}
-
-
-
-.time {
-  display: inline-block;
-  color: $white;
-  bottom: 10px;
-}
-
-.ui-slider-handler {
-  height: auto;
-}
-
-.additional-controls {
-  display: flex;
-  align-items: center;
-  #start-stop {
-    order: 1;
-  }
-  .time {
-    order: 2;
-  }
-  .empty {
-    order: 3;
-    flex-grow: 2;
-  }
-  #volume-off-on {
-    order: 4;
-  }
-  #volume-fader {
-    order: 5;
-    width: 10%;
-    @include tablet {
-      width: 200px;
-      visibility: visible;
-    }
-  }
-  #subtitles {
-    order: 6;
-  }
-  #playback-speed-button {
-    order: 7;
-  }
-  #full-screen-button {
-    order: 8;
-    flex-direction: row-reverse;
-  }
+h1 {
+  text-align: center;
 }
 
 .hidden {
   visibility: collapse;
 }
 
-.seek-bar-container {
-  position: relative;
-  z-index: 300001;
-  div {
-    background: #666;
-    height: 4px;
-    width: 100%;
-  }
-}
 
-video {
-  z-index: -1;
-}
 
 p span {
   cursor: pointer;
@@ -101,13 +26,5 @@ p span {
   color: salmon;
 }
 
-#pause-button, #play-button, #volumeOff, #volumeOn,
-#full-screen {
-  float: left;
-  width: 12px;
-  @include tablet {
-    width: 15px;
-  }
-}
 
 

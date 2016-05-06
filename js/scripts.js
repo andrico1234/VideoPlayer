@@ -56,29 +56,14 @@ $(function () {
     })
 });
 
-
-$(function () {
-    $("#slider").slider({
-        range: "min",
-        value: 0,
-        min: 1,
-        max: 100
-    })
-});
-
 seekSlider.click(function () {
     changeTime();
 });
 
-// $(seekSlider).mouseup(function() {
-//     changeTime();
-// });
-
 function changeTime() {
-    $video.currentTime = $video.duration * (seekSlider.slider.value / 100);
+    $video.currentTime = $video.duration * (seekSlider.slider("value") / 100);
     console.log("video changed");
 }
-
 
 
 $video.addEventListener("timeupdate", function () {
