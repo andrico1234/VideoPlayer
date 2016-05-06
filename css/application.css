@@ -10,6 +10,9 @@ body {
   height: 10px;
   background-color: rgba(0, 0, 0, 0.4); }
 
+#slider-contain {
+  width: 70%; }
+
 button {
   height: 35px;
   border: none;
@@ -21,6 +24,9 @@ button {
   display: inline-block;
   color: #fff;
   bottom: 10px; }
+
+.ui-slider-handler {
+  height: auto; }
 
 .additional-controls {
   display: flex;

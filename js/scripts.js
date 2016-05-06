@@ -47,19 +47,6 @@ $playPauseButton.click(function () {
 
 // video seek
 
-$(seekSlider).click(function () {
-    changeTime();
-});
-
-// $(seekSlider).mouseup(function() {
-//     changeTime();
-// });
-
-function changeTime() {
-    $video.currentTime = $video.duration * (seekSlider.value / 100);
-    console.log("video changed");
-}
-
 $(function () {
     seekSlider.slider({
         range: "min",
@@ -69,10 +56,36 @@ $(function () {
     })
 });
 
+
+$(function () {
+    $("#slider").slider({
+        range: "min",
+        value: 0,
+        min: 1,
+        max: 100
+    })
+});
+
+seekSlider.click(function () {
+    changeTime();
+});
+
+// $(seekSlider).mouseup(function() {
+//     changeTime();
+// });
+
+function changeTime() {
+    $video.currentTime = $video.duration * (seekSlider.slider.value / 100);
+    console.log("video changed");
+}
+
+
+
 $video.addEventListener("timeupdate", function () {
 
     var newTime = $video.currentTime * (100 / $video.duration);
-    seekSlider.value = newTime;
+    // seekSlider.value = newTime;
+    seekSlider.slider("value", newTime);
 
     var currentMinutes = Math.floor($video.currentTime / 60);
     currentSeconds = Math.floor($video.currentTime - currentMinutes * 60);
@@ -100,16 +113,6 @@ $video.addEventListener("timeupdate", function () {
     }
 });
 
-
-// remove the class of highlighted if the next sibiling has the class
-//  e.g. class of subtitle 4 is 15st, parse int and have the for loop keep looking for which class is the active one
-// if the currentTime variable is larger than
-
-
-// have the colour of the slider bar change if the ball is past the point of playing
-// a few ideas. If the value of the slider is less than the position of the blue, change colour
-// use the seekSlider.value and everything less than that changes colour.
-
 // $(seekSlider).mousedown(function () {
 //     playPause();
 // });
@@ -119,7 +122,6 @@ $video.addEventListener("timeupdate", function () {
 // });
 
 // issue: seekSlider doesn't work when video pauses when bar is clicked.
-
 
 // volume functions
 
