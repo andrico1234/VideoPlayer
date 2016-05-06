@@ -83,6 +83,14 @@ video {
   z-index: -1;
 }
 
+p span {
+  cursor: pointer;
+}
+
+.highlighted {
+  color: salmon;
+}
+
 #pause-button, #play-button, #volumeOff, #volumeOn,
 #full-screen {
   float: left;

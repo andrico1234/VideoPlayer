@@ -4,17 +4,18 @@
 
 var $video = document.getElementById("main-video"), track;
 var currentVolume = $video.volume;
-var seekSlider = document.getElementById("seek-bar");
+var seekSlider = $(document.getElementById("seek-bar"));
 var volumeBar = document.getElementById("volume-fader");
 var $volumeButton = $('#volume-off-on');
 var $playPauseButton = $("#start-stop");
 var $fullScreen = $(document.getElementById("full-screen-button"));
 var $currentTime = document.getElementById("current-time");
 var $durationTime = document.getElementById("duration-time");
-var $playbackButton = document.getElementById("playback-speed-button");
 var $videoInterface = document.getElementsByClassName("additional-controls");
 var speedCounter = 0;
 var $captionButton = $(document.getElementById("subtitles"));
+var currentSeconds;
+var transcriptParent = document.getElementById("transcript-parent");
 
 $("#play-button").hide();
 $("#pause-button").show();
@@ -60,7 +61,7 @@ function changeTime() {
 }
 
 $(function () {
-    $(seekSlider).slider({
+    seekSlider.slider({
         range: "min",
         value: 0,
         min: 1,
@@ -74,7 +75,7 @@ $video.addEventListener("timeupdate", function () {
     seekSlider.value = newTime;
 
     var currentMinutes = Math.floor($video.currentTime / 60);
-    var currentSeconds = Math.floor($video.currentTime - currentMinutes * 60);
+    currentSeconds = Math.floor($video.currentTime - currentMinutes * 60);
     var totalMinutes = Math.floor($video.duration / 60);
     var totalSeconds = Math.floor($video.duration - totalMinutes * 60);
     if (currentSeconds < 10) {
@@ -87,7 +88,23 @@ $video.addEventListener("timeupdate", function () {
     var totalTime = totalMinutes + ":" + totalSeconds;
     $durationTime.innerHTML = totalTime;
     $currentTime.innerHTML = currentTime;
+
+    for (var i = 0; i < transcriptParent.children.length; i++) {
+        if (transcriptParent.children[i].dataset.time <= currentSeconds) {
+            $(transcriptParent.children[i]).addClass("highlighted");
+        }
+        if (transcriptParent.children[i].dataset.end <= currentSeconds) {
+            $(transcriptParent.children[i]).removeClass("highlighted");
+            console.log("code is run");
+        }
+    }
 });
+
+
+// remove the class of highlighted if the next sibiling has the class
+//  e.g. class of subtitle 4 is 15st, parse int and have the for loop keep looking for which class is the active one
+// if the currentTime variable is larger than
+
 
 // have the colour of the slider bar change if the ball is past the point of playing
 // a few ideas. If the value of the slider is less than the position of the blue, change colour
@@ -178,15 +195,15 @@ $("#playback-speed-button").click(function () {
 
 
 // Hover Code
-$(document).ready(function() {
+$(document).ready(function () {
     $($videoInterface).fadeOut(100);
 });
 
-    $(".video-container").hover(function () {
-        $($videoInterface).fadeIn(100);
-    }, function () {
-        $($videoInterface).fadeOut(100);
-    });
+$(".video-container").hover(function () {
+    $($videoInterface).fadeIn(100);
+}, function () {
+    $($videoInterface).fadeOut(100);
+});
 // when mouse leaves div container toolbar disappears, time bar stretches in height.
 
 
@@ -201,17 +218,10 @@ function toggleSubtitles() {
     }
 }
 
-// var track = $video.textTracks;
-// track.mode = 'hidden';
 
 $captionButton.click(function () {
     toggleSubtitles();
 });
-// when cc button is pressed when subtitles are enabled
-// turn off captions. add a class of hidden?
-
-// when cc is pressed when subtitles are disabled
-// turn on captions by removing class
 
 
 // Full screen
@@ -231,3 +241,7 @@ $fullScreen.click(function () {
 
 
 // Transcript Code
+
+// Highlight the transcript when the video is playing over the correct line.
+
+

@@ -63,6 +63,12 @@ button {
 video {
   z-index: -1; }
 
+p span {
+  cursor: pointer; }
+
+.highlighted {
+  color: salmon; }
+
 #pause-button, #play-button, #volumeOff, #volumeOn,
 #full-screen {
   float: left;
@@ -117,7 +123,7 @@ h1 {
     border-radius: 3px; }
   @media screen and (min-width: 1024px) {
     .caption-container {
-      width: 70%; }
+      width: 80%; }
       .caption-container p span {
         font-size: 20px; } }
 
