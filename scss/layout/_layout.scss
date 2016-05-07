@@ -11,10 +11,18 @@
 .seek-bar-container {
   position: relative;
   z-index: 300001;
-  div {
-    background: #666;
-    height: 4px;
+  background: transparent;
+  #seek-bar .ui-slider-range {
+    background: darken($antiqueWhite, 40%);
     width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+  #buffer-bar .ui-slider-range {
+    background: darken($antiqueWhite, 60%);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
   }
 }
 

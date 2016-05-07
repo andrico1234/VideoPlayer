@@ -20,6 +20,18 @@
   }
 }
 
+.ui-slider-handle {
+  display: none;
+}
+
+#seek-bar{
+  background: #88ac0b;
+}
+
+.ui-slider-range-min {
+  background: transparent;
+}
+
 button {
   height: 35px;
   border: none;

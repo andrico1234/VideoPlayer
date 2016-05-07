@@ -28,11 +28,18 @@ p span {
 
 .seek-bar-container {
   position: relative;
-  z-index: 300001; }
-  .seek-bar-container div {
-    background: #666;
-    height: 4px;
-    width: 100%; }
+  z-index: 300001;
+  background: transparent; }
+  .seek-bar-container #seek-bar .ui-slider-range {
+    background: #e39022;
+    width: 100%;
+    position: absolute;
+    bottom: 0; }
+  .seek-bar-container #buffer-bar .ui-slider-range {
+    background: #8d5812;
+    width: 100%;
+    position: absolute;
+    bottom: 0; }
 
 .caption-container {
   width: 90%;
@@ -65,6 +72,15 @@ p span {
   .video-container video {
     width: 100%;
     z-index: -1; }
+
+.ui-slider-handle {
+  display: none; }
+
+#seek-bar {
+  background: #88ac0b; }
+
+.ui-slider-range-min {
+  background: transparent; }
 
 button {
   height: 35px;

@@ -5,6 +5,7 @@
 var $video = document.getElementById("main-video"), track;
 var currentVolume = $video.volume;
 var seekSlider = $(document.getElementById("seek-bar"));
+var bufferSlider = $(document.getElementById("buffer-bar"));
 var volumeBar = document.getElementById("volume-fader");
 var $volumeButton = $('#volume-off-on');
 var $playPauseButton = $("#start-stop");
@@ -56,8 +57,13 @@ $(function () {
     })
 });
 
-seekSlider.click(function () {
-    changeTime();
+$(function () {
+    bufferSlider.slider({
+        range: "min",
+        value: 0,
+        min: 1,
+        max: 100
+    })
 });
 
 function changeTime() {
@@ -69,7 +75,6 @@ function changeTime() {
 $video.addEventListener("timeupdate", function () {
 
     var newTime = $video.currentTime * (100 / $video.duration);
-    // seekSlider.value = newTime;
     seekSlider.slider("value", newTime);
 
     var currentMinutes = Math.floor($video.currentTime / 60);
@@ -93,19 +98,37 @@ $video.addEventListener("timeupdate", function () {
         }
         if (transcriptParent.children[i].dataset.end <= currentSeconds) {
             $(transcriptParent.children[i]).removeClass("highlighted");
-            console.log("code is run");
         }
     }
 });
 
-// $(seekSlider).mousedown(function () {
+
+// if moving forward, the function needs to find iff the start time is less than the current second.
+// when the end reaches the current second the class is removed
+//
+
+$("p span").click(function () {
+    console.log(this.dataset.time);
+    $video.currentTime = this.dataset.time;
+    $(transcriptParent.children).removeClass("highlighted");
+
+});
+
+
+// seekSlider.mousedown(function () {
 //     playPause();
+//     changeTime();
+//
 // });
 //
-// $(seekSlider).mouseup(function () {
+// seekSlider.mouseup(function () {
 //     playPause();
+//     changeTime();
 // });
 
+seekSlider.click(function () {
+    changeTime();
+});
 // issue: seekSlider doesn't work when video pauses when bar is clicked.
 
 // volume functions
@@ -137,13 +160,12 @@ function updateVolumeBar() {
     console.log("volume bar is changed");
 }
 
-// To add - when volumebar val = 0, change image.
 // make volume slider appear through hover and change orientation to vertical
+
 
 $(volumeBar).on("change", function () {
     updateVolumeBar();
 });
-
 
 // Playback speed code
 
@@ -178,10 +200,8 @@ $("#playback-speed-button").click(function () {
 // images by Daan Dirk
 
 
-// Buffering Code
-
-
 // Hover Code
+
 $(document).ready(function () {
     $($videoInterface).fadeOut(100);
 });
@@ -195,6 +215,7 @@ $(".video-container").hover(function () {
 
 
 // Subtitle code
+
 function toggleSubtitles() {
     if ($video.textTracks[0].mode == 'showing') {
         $video.textTracks[0].mode = "hidden";
@@ -204,7 +225,6 @@ function toggleSubtitles() {
         console.log("enable subtitles");
     }
 }
-
 
 $captionButton.click(function () {
     toggleSubtitles();
@@ -225,10 +245,4 @@ $fullScreen.click(function () {
 });
 
 // add the toolbar to fullscreen
-
-
-// Transcript Code
-
-// Highlight the transcript when the video is playing over the correct line.
-
 
