@@ -2,7 +2,7 @@
  * Created by Home on 28/04/2016.
  */
 
-var $video = document.getElementById("main-video"), track;
+var $video = document.getElementById("main-video");
 var currentVolume = $video.volume;
 var seekSlider = $(document.getElementById("seek-bar"));
 var bufferSlider = $(document.getElementById("buffer-bar"));
@@ -17,9 +17,6 @@ var speedCounter = 0;
 var $captionButton = $(document.getElementById("subtitles"));
 var currentSeconds;
 var transcriptParent = document.getElementById("transcript-parent");
-// var bufferedStart = $video.buffered.start(0);
-// var bufferedEnd = $video.buffered.end(0) + 1;
-
 
 $("#play-button").hide();
 $("#pause-button").show();
@@ -87,8 +84,6 @@ $video.addEventListener("timeupdate", function () {
 
     var newTime = $video.currentTime * (100 / $video.duration);
     seekSlider.slider("value", newTime);
-    // bufferSlider.slider("value", bufferedEnd);
-
 
     var currentMinutes = Math.floor($video.currentTime / 60);
     currentSeconds = Math.floor($video.currentTime - currentMinutes * 60);
@@ -114,11 +109,6 @@ $video.addEventListener("timeupdate", function () {
         }
     }
 });
-
-
-// if moving forward, the function needs to find iff the start time is less than the current second.
-// when the end reaches the current second the class is removed
-//
 
 $("p span").click(function () {
     console.log(this.dataset.time);
@@ -173,9 +163,6 @@ function updateVolumeBar() {
     console.log("volume bar is changed");
 }
 
-// make volume slider appear through hover and change orientation to vertical
-
-
 $(volumeBar).on("change", function () {
     updateVolumeBar();
 });
@@ -224,7 +211,6 @@ $(".video-container").hover(function () {
 }, function () {
     $($videoInterface).fadeOut(100);
 });
-// when mouse leaves div container toolbar disappears, time bar stretches in height.
 
 
 // Subtitle code
