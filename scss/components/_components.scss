@@ -11,8 +11,16 @@
     width: 80%;
   }
   .control-bar {
-    position: absolute;
+    position: relative;
     bottom: 0;
+      z-index: 300000;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      img {
+        padding: 5px;
+        z-index: 1;
+        position: relative;
+      }
   }
   video {
     width: 100%;
@@ -25,10 +33,11 @@
 }
 
 #seek-bar{
-  background: #88ac0b;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.ui-slider-range-min {
+.ui-slider {
   background: transparent;
 }
 
@@ -86,10 +95,6 @@ button {
   }
 }
 
-#seek-bar {
-  height: 10px;
-  background-color: rgba(0, 0, 0, 0.4);
-}
 
 .time {
   display: inline-block;
@@ -99,16 +104,5 @@ button {
 
 #playback-speed-button img, #cc {
   width: 22px;
-}
-
-.control-bar {
-  z-index: 300000;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  img {
-    padding: 5px;
-    z-index: 1;
-    position: relative;
-  }
 }
 

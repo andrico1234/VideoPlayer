@@ -17,6 +17,9 @@ var speedCounter = 0;
 var $captionButton = $(document.getElementById("subtitles"));
 var currentSeconds;
 var transcriptParent = document.getElementById("transcript-parent");
+// var bufferedStart = $video.buffered.start(0);
+// var bufferedEnd = $video.buffered.end(0) + 1;
+
 
 $("#play-button").hide();
 $("#pause-button").show();
@@ -61,21 +64,31 @@ $(function () {
     bufferSlider.slider({
         range: "min",
         value: 0,
-        min: 1,
-        max: 100
-    })
+        min: 0,
+        max: 100,
+        disabled: true
+    });
 });
+
 
 function changeTime() {
     $video.currentTime = $video.duration * (seekSlider.slider("value") / 100);
     console.log("video changed");
 }
 
+$($video).bind("progress", function() {
+   if ($video.buffered.length > 0) {
+       var percent = ($video.buffered.end(0) / $video.duration) * 100;
+    bufferSlider.slider("value", percent);
+   }
+});
 
 $video.addEventListener("timeupdate", function () {
 
     var newTime = $video.currentTime * (100 / $video.duration);
     seekSlider.slider("value", newTime);
+    // bufferSlider.slider("value", bufferedEnd);
+
 
     var currentMinutes = Math.floor($video.currentTime / 60);
     currentSeconds = Math.floor($video.currentTime - currentMinutes * 60);

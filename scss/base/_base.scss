@@ -26,5 +26,11 @@ p span {
   color: salmon;
 }
 
+.video-container {
+  position: relative;
+}
 
+#buffer-bar, #seek-bar {
+  height: 10px;
+}
 
