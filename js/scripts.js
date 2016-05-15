@@ -67,18 +67,26 @@ $(function () {
     });
 });
 
+function updateBuffer() {
+    if ($video.buffered.length > 0) {
+        var percent = ($video.buffered.end(0) / $video.duration) * 100;
+        bufferSlider.slider("value", percent);
+    }
+}
 
 function changeTime() {
     $video.currentTime = $video.duration * (seekSlider.slider("value") / 100);
-    console.log("video changed");
 }
 
-$($video).bind("progress", function() {
-   if ($video.buffered.length > 0) {
-       var percent = ($video.buffered.end(0) / $video.duration) * 100;
-    bufferSlider.slider("value", percent);
-   }
+$($video).bind("progress", function () {
+    // if ($video.buffered.length > 0) {
+    //     var percent = ($video.buffered.end(0) / $video.duration) * 100;
+    //     bufferSlider.slider("value", percent);
+    // }
+    updateBuffer();
 });
+
+// buffered end updates whenever the video has the time changed. create a new function
 
 $video.addEventListener("timeupdate", function () {
 
@@ -117,16 +125,16 @@ $("p span").click(function () {
 
 });
 
-
+//
 // seekSlider.mousedown(function () {
 //     playPause();
 //     changeTime();
 //
 // });
-//
+
 // seekSlider.mouseup(function () {
 //     playPause();
-//     changeTime();
+//     // changeTime();
 // });
 
 seekSlider.click(function () {
@@ -143,24 +151,22 @@ function volumeToggle() {
         volumeBar.value = 0;
         $("#volumeOff").show();
         $("#volumeOn").hide();
-        console.log("sound on");
+        // console.log("sound on");
     } else {
         $video.volume = 1;
         $("#volumeOff").hide();
         $("#volumeOn").show();
-        console.log("sound off");
+        // console.log("sound off");
         volumeBar.value = 20;
     }
 }
 
 $volumeButton.click(function () {
     volumeToggle();
-    console.log("button clicked");
 });
 
 function updateVolumeBar() {
     $video.volume = (volumeBar.value / 20);
-    console.log("volume bar is changed");
 }
 
 $(volumeBar).on("change", function () {
@@ -175,20 +181,17 @@ function changeSpeed() {
         $("#50-speed").hide();
         $("#150-speed").show();
         $video.playbackRate = 1.5;
-        console.log("fast speed and counter is " + speedCounter);
         speedCounter++;
     } else if (speedCounter == 1) {
         $("#100-speed").hide();
         $("#50-speed").show();
         $("#150-speed").hide();
-        console.log("slow speed and counter is " + speedCounter);
         $video.playbackRate = 0.5;
         speedCounter++;
     } else {
         $("#100-speed").show();
         $("#50-speed").hide();
         $("#150-speed").hide();
-        console.log("normal speed and counter is " + speedCounter);
         $video.playbackRate = 1;
         speedCounter = 0;
     }
@@ -218,10 +221,8 @@ $(".video-container").hover(function () {
 function toggleSubtitles() {
     if ($video.textTracks[0].mode == 'showing') {
         $video.textTracks[0].mode = "hidden";
-        console.log("disable subtitles");
     } else {
         $video.textTracks[0].mode = "showing";
-        console.log("enable subtitles");
     }
 }
 
@@ -240,8 +241,8 @@ $fullScreen.click(function () {
     } else if ($video.webkitRequestFullscreen) {
         $video.webkitRequestFullscreen(); // Chrome and Safari
     }
-    console.log("full screen");
 });
 
-// add the toolbar to fullscreen
-
+// Add stronger click and drag functionality
+// When unmute is clicked, return the volume to its previous value (currently resets to full value
+// Make the buffer bar a little more noticeable. 
